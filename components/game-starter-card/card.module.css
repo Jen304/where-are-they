@@ -1,0 +1,8 @@
+.cardContainer{
+    border: 1px whitesmoke solid;
+    border-radius: 20px;
+    background-color: white;
+    padding: 5px;
+    max-width: 200px;
+    margin: auto;
+}
