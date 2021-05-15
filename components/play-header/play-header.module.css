@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.headerTitle {
+    color: orange;
+}
+
+.headerCounter {
+    color: white;
+}
+
+.headerButton {
+    background-color: orange;
+    border-color: orange;
+}
+
+.headerItem{
+    display: inline-block;
+}
