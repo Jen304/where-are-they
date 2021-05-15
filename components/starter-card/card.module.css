@@ -9,11 +9,7 @@
 .cardTitle{
     text-align: center;
 }
-.characterItemContainer {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px 0;
-}
+
 
 .cardButton{
     margin: auto;
@@ -22,7 +18,3 @@
     border: 1px solid orange;
 }
 
-.characterImage{
-    height: 80px;
-    width: 80px;
-}
