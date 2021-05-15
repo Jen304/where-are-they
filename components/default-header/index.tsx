@@ -5,6 +5,10 @@ import styles from "./default-header.module.css";
 const { Header } = Layout;
 
 const DefaultHeader = (): ReactElement => {
-  return <Header className={styles.header}>Where are they?</Header>;
+  return (
+    <Header className={styles.header}>
+      <h1 className={styles.headerTitle}>Where are they?</h1>
+    </Header>
+  );
 };
 export default DefaultHeader;

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import CharacterItem from "./character-item/character-item";
+import CharacterItem from "./character-item";
 
 /**
  * Contain a list of character information item

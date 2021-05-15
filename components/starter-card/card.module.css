@@ -3,8 +3,9 @@
     border-radius: 30px;
     background-color: white;
     padding: 5px;
-    width: 350px;
-    margin: 10px auto;
+    min-width: 300px;
+    max-width: 360px;
+    margin: 45px auto;
 }
 .cardTitle{
     text-align: center;
