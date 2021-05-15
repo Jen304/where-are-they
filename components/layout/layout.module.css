@@ -1,0 +1,25 @@
+.layout {
+   
+    min-height: 100vh;
+
+}
+.backgroundContainer {
+    background-image: url("/game-picture.jpg");
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    z-index: -100;
+}
+
+.backgroundContainer:before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    top: 0; bottom: 0;
+    background: rgba(151, 148, 148, 0.9);
+    z-index: -100;
+}

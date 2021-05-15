@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import { ReactElement } from "react";
 import Head from "next/head";
+import styles from "./layout.module.css";
 
 type PropsType = {
   title: string;
@@ -17,7 +18,8 @@ const DefaultLayout = ({ title, children }: PropsType): ReactElement => {
       <Head>
         <title>{title ? title + " | " : ""} Where are you?</title>
       </Head>
-      <Layout className="layout">{children}</Layout>
+      <Layout className={styles.layout}>{children}
+      <div className={styles.backgroundContainer}></div></Layout>
     </>
   );
 };
