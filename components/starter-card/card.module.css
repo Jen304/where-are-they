@@ -1,11 +1,10 @@
 .cardContainer{
     border: 1px whitesmoke solid;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: white;
     padding: 5px;
-    max-width: 300px;
-    min-width: 200px;
-    margin: auto;
+    width: 350px;
+    margin: 10px auto;
 }
 .cardTitle{
     text-align: center;
