@@ -1,7 +1,5 @@
 .layout {
-   
     min-height: 100vh;
-
 }
 .backgroundContainer {
     background-image: url("/game-picture.jpg");
