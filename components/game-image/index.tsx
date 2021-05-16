@@ -1,22 +1,20 @@
-import { ReactElement } from "react";
+import { MouseEventHandler, ReactElement } from "react";
 import styles from "./game-image.module.css";
 import CustomCursor from "custom-cursor-react";
 import "custom-cursor-react/dist/index.css";
 
 type PropsType = {
   source: string;
+  onClick: MouseEventHandler;
 };
 
 /**
  * Game image for play room, so user can click on and find characters
  */
-const GameImage = ({ source }: PropsType): ReactElement => {
-  const onClickImage = (e) => {
-    console.log(e);
-  };
+const GameImage = ({ source, onClick }: PropsType): ReactElement => {
   return (
-    <div className={styles.gameImageContainer} onClick={onClickImage}>
-      <img className={styles.gameImage} src={source}></img>
+    <>
+      <img className={styles.gameImage} src={source} onClick={onClick}></img>
       <CustomCursor
         targets={[".link", ".your-css-selector"]}
         customClass="custom-cursor"
@@ -29,7 +27,7 @@ const GameImage = ({ source }: PropsType): ReactElement => {
         }}
         targetOpacity={0.5}
       />
-    </div>
+      </>
   );
 };
 

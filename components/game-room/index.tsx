@@ -32,11 +32,12 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
     // set menu display timeout
     const timeout = setTimeout(() => {
       setShowMenu(false);
-    }, 3000);
+    }, 5000);
     newTimeoutList.push(timeout);
     setMenuTimeout(newTimeoutList);
   };
 
+  // clear all the timeout in the list
   const clearTimeoutList = (list: ReturnType<typeof setTimeout>[]) => {
     list.forEach((item) => {
       clearTimeout(item);
@@ -44,8 +45,8 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
   };
 
   return (
-    <div onClick={onImageClick} className={styles.container}>
-      <GameImage source={game.image} />
+    <div  className={styles.container}>
+      <GameImage source={game.image} onClick={onImageClick}/>
       {showMenu && (
         <CharacterNameMenu
           characters={game.characters}

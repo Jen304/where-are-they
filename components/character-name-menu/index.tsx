@@ -27,7 +27,9 @@ const CharacterNameMenu = ({
       style={{ top: `calc(${position.y}px - 3.5rem)`, left: `${position.x}px` }}
     >
       {characters.map((character) => (
-        <Menu.Item key={character.name}>{character.name}</Menu.Item>
+        <Menu.Item key={character.name} className={styles.menuItem}>
+          {character.name}
+        </Menu.Item>
       ))}
     </Menu>
   );
