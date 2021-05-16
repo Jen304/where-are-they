@@ -7,7 +7,10 @@ const PlayerRecordForm = (): ReactElement => {
     <Card className={styles.container}>
       <Form>
         <h1 className={styles.formItem}>Save your record</h1>
-        <Input placeholder="Enter your name" className={`${styles.formItem} ${styles.formInput}`} />
+        <Input
+          placeholder="Enter your name"
+          className={`${styles.formItem} ${styles.formInput}`}
+        />
         <Button
           shape="round"
           className={styles.formButton}

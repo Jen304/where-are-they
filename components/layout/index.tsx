@@ -2,7 +2,6 @@ import { Layout } from "antd";
 import { ReactElement } from "react";
 import Head from "next/head";
 import styles from "./layout.module.css";
-import head from "next/head";
 
 type PropsType = {
   title?: string;

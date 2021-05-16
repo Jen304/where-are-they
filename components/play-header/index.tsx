@@ -1,4 +1,4 @@
-import { Layout, Button, Popover } from "antd";
+import { Layout, Button } from "antd";
 import { ReactElement } from "react";
 import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-item/character-list-popover-card";
