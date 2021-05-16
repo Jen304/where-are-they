@@ -12,6 +12,7 @@
   "dependencies": {
     "antd": "^4.15.5",
     "custom-cursor-react": "^1.0.5",
+    "firebase-admin": "^9.8.0",
     "gsap": "^3.6.1",
     "next": "10.2.0",
     "react": "17.0.2",
