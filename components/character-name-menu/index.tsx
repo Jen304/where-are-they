@@ -22,6 +22,8 @@ const CharacterNameMenu = ({
   return (
     <Menu
       className={styles.menuContainer}
+      // use calc to display exactly position of menu
+      // container position is relative => make the y position higher to adjust accordingly
       style={{ top: `calc(${position.y}px - 3.5rem)`, left: `${position.x}px` }}
     >
       {characters.map((character) => (
