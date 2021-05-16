@@ -3,6 +3,9 @@ import { ReactElement } from "react";
 import styles from "./card.module.css";
 import CharacterItemList from "../character-item-list";
 
+/**
+ * A card displays the game information before player start the game
+ */
 const StarterCard = (): ReactElement => {
   return (
     <Card className={styles.cardContainer}>
