@@ -3,6 +3,7 @@ import { GameType } from "../../types/game";
 import CharacterNameMenu from "../character-name-menu";
 import GameImage from "../game-image";
 import styles from "./game-room.module.css";
+import { notification } from "antd";
 
 type PropsType = {
   game: GameType;
@@ -21,7 +22,6 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
     // clear the old menu time out
     clearTimeoutList(menuTimeout);
     setMenuTimeout([]);
-
     // set menu position
     const { pageX: x, pageY: y } = e;
     setMenuPosition({ x, y });
@@ -44,13 +44,24 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
     });
   };
 
+  const onPlayerOptionClick = (characterName) => {
+    console.log(characterName);
+    notification.open({
+      message: "Opp! That's not correct.",
+    });
+    clearTimeoutList(menuTimeout);
+    setMenuTimeout([]);
+    setShowMenu(false);
+  };
+
   return (
-    <div  className={styles.container}>
-      <GameImage source={game.image} onClick={onImageClick}/>
+    <div className={styles.container}>
+      <GameImage source={game.image} onClick={onImageClick} />
       {showMenu && (
         <CharacterNameMenu
           characters={game.characters}
           position={menuPosition}
+          itemOnClickHandler={onPlayerOptionClick}
         />
       )}
     </div>

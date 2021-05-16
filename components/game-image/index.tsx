@@ -27,7 +27,7 @@ const GameImage = ({ source, onClick }: PropsType): ReactElement => {
         }}
         targetOpacity={0.5}
       />
-      </>
+    </>
   );
 };
 

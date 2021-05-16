@@ -1,4 +1,4 @@
-import { Menu } from "antd";
+import { Menu, notification } from "antd";
 import { ReactElement } from "react";
 import { CharacterType } from "../../types/game";
 import styles from "./character-name-menu.module.css";
@@ -9,6 +9,7 @@ type PropsType = {
     x: number;
     y: number;
   };
+  itemOnClickHandler: (characterName: string) => void;
 };
 
 /**
@@ -17,8 +18,14 @@ type PropsType = {
 const CharacterNameMenu = ({
   characters,
   position,
+  itemOnClickHandler,
 }: PropsType): ReactElement => {
-  console.log(position);
+  const getMenuItemClickHandler = (characterName: string) => {
+    const onClick = () => {
+      itemOnClickHandler(characterName);
+    };
+    return onClick;
+  };
   return (
     <Menu
       className={styles.menuContainer}
@@ -27,7 +34,11 @@ const CharacterNameMenu = ({
       style={{ top: `calc(${position.y}px - 3.5rem)`, left: `${position.x}px` }}
     >
       {characters.map((character) => (
-        <Menu.Item key={character.name} className={styles.menuItem}>
+        <Menu.Item
+          key={character.name}
+          className={styles.menuItem}
+          onClick={getMenuItemClickHandler(character.name)}
+        >
           {character.name}
         </Menu.Item>
       ))}
