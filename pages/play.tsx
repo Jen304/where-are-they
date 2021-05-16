@@ -36,7 +36,7 @@ type PropsType = {
 const Play = ({ games }: PropsType): ReactElement => {
   return (
     <DefaultLayout header={<PlayHeader />}>
-      <GameImage />
+      <GameImage source={games.image}/>
       <CharacterNameMenu />
       <PlayerRecordForm />
     </DefaultLayout>

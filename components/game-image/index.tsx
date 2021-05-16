@@ -3,13 +3,17 @@ import styles from "./game-image.module.css";
 import CustomCursor from "custom-cursor-react";
 import "custom-cursor-react/dist/index.css";
 
+type PropsType = {
+  source: string;
+}
+
 /**
  * Game image for play room, so user can click on and find characters
  */
-const GameImage = (): ReactElement => {
+const GameImage = ({ source }: PropsType): ReactElement => {
   return (
     <div className={styles.gameImageContainer}>
-      <img className={styles.gameImage} src="game-picture.jpg"></img>
+      <img className={styles.gameImage} src={source}></img>
       <CustomCursor
         targets={[".link", ".your-css-selector"]}
         customClass="custom-cursor"
