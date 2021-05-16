@@ -12,7 +12,10 @@ type PropsType = {
 /**
  * A popover card contains a lost of character information
  */
-const CharacterListPopoverCard = ({ children, characters }: PropsType): ReactElement => {
+const CharacterListPopoverCard = ({
+  children,
+  characters,
+}: PropsType): ReactElement => {
   return (
     <Popover
       placement="bottomRight"

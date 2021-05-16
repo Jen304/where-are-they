@@ -11,8 +11,11 @@ type PropsType = {
  * Game image for play room, so user can click on and find characters
  */
 const GameImage = ({ source }: PropsType): ReactElement => {
+  const onClickImage = (e) => {
+    console.log(e);
+  };
   return (
-    <div className={styles.gameImageContainer}>
+    <div className={styles.gameImageContainer} onClick={onClickImage}>
       <img className={styles.gameImage} src={source}></img>
       <CustomCursor
         targets={[".link", ".your-css-selector"]}
