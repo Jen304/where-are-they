@@ -1,0 +1,8 @@
+.menuContainer{
+    background-color: black !important;
+    border-radius: 20px;
+    min-width: 85px;
+    max-width: 100px;
+    color: white;
+    text-align: center;
+}
