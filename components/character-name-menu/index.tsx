@@ -5,14 +5,25 @@ import styles from "./character-name-menu.module.css";
 
 type PropsType = {
   characters: CharacterType[];
+  position: {
+    x: number;
+    y: number;
+  };
 };
 
 /**
  * Display character option menu for player to choose
  */
-const CharacterNameMenu = ({ characters }: PropsType): ReactElement => {
+const CharacterNameMenu = ({
+  characters,
+  position,
+}: PropsType): ReactElement => {
+  console.log(position);
   return (
-    <Menu className={styles.menuContainer}>
+    <Menu
+      className={styles.menuContainer}
+      style={{ top: `${position.y}px`, left: `${position.x}px` }}
+    >
       {characters.map((character) => (
         <Menu.Item key={character.name}>{character.name}</Menu.Item>
       ))}
