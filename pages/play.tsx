@@ -5,6 +5,10 @@ import GameImage from "../components/game-image";
 import CharacterNameMenu from "../components/character-name-menu";
 import PlayerRecordForm from "../components/player-record-form";
 
+
+/**
+ * Play room page
+ */
 const Play = (): ReactElement => {
   return (
     <DefaultLayout header={<PlayHeader />}>

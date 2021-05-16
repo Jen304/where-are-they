@@ -2,6 +2,9 @@ import { Card, Table } from "antd";
 import { ReactElement } from "react";
 import styles from "./leader-board.module.css";
 
+/**
+ * A board of top players
+ */
 const LeaderBoard = (): ReactElement => {
   const columns = [
     {

@@ -5,6 +5,9 @@ import CharacterListPopoverCard from "../character-item/character-list-popover-c
 
 const { Header } = Layout;
 
+/**
+ * Header for Play page. Contains logo, counter and info button
+ */
 const PlayHeader = (): ReactElement => {
   return (
     <Header className={styles.header}>

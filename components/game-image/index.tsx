@@ -3,6 +3,9 @@ import styles from "./game-image.module.css";
 import CustomCursor from "custom-cursor-react";
 import "custom-cursor-react/dist/index.css";
 
+/**
+ * Game image for play room, so user can click on and find characters
+ */
 const GameImage = (): ReactElement => {
   return (
     <div className={styles.gameImageContainer}>
