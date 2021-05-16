@@ -1,0 +1,7 @@
+.boardContainer {
+    min-width: 350px;
+    max-width: 400px;
+    border-radius: 30px;
+    text-align: center;
+    margin: 50px auto;
+}
