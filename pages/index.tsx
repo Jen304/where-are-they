@@ -8,7 +8,11 @@ import { GameType } from "../types/game";
 /**
  * Fetch game data from database and pass to the home page
  */
-const getStaticProps = async (): Promise<GetStaticPropsResult<unknown>> => {
+const getStaticProps = async (): Promise<
+  GetStaticPropsResult<{
+    games: GameType;
+  }>
+> => {
   try {
     const response = await fetch("http://localhost:3000/api/games");
     const gameData = await response.json();
