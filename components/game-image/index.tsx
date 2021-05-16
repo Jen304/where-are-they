@@ -5,7 +5,7 @@ import "custom-cursor-react/dist/index.css";
 
 type PropsType = {
   source: string;
-}
+};
 
 /**
  * Game image for play room, so user can click on and find characters

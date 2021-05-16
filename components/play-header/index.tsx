@@ -2,20 +2,25 @@ import { Layout, Button } from "antd";
 import { ReactElement } from "react";
 import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-item/character-list-popover-card";
+import { CharacterType } from "../../types/game";
 
 const { Header } = Layout;
+
+type PropsType = {
+  characters: CharacterType[];
+};
 
 /**
  * Header for Play page. Contains logo, counter and info button
  */
-const PlayHeader = (): ReactElement => {
+const PlayHeader = ({ characters }: PropsType): ReactElement => {
   return (
     <Header className={styles.header}>
       <h1 className={`${styles.headerItem} ${styles.headerTitle}`}>
         Where are they?
       </h1>
       <h1 className={`${styles.headerItem} ${styles.headerCounter}`}>00:00</h1>
-      <CharacterListPopoverCard>
+      <CharacterListPopoverCard characters={characters}>
         <Button
           type="primary"
           shape="circle"
