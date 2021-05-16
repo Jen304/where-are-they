@@ -3,30 +3,34 @@ import { ReactElement } from "react";
 import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-item/character-list-popover-card";
 import { CharacterType } from "../../types/game";
+import Timer from "../timer";
 
 const { Header } = Layout;
 
 type PropsType = {
   characters: CharacterType[];
+  characterLeft: number;
 };
 
 /**
  * Header for Play page. Contains logo, counter and info button
  */
-const PlayHeader = ({ characters }: PropsType): ReactElement => {
+const PlayHeader = ({ characters, characterLeft }: PropsType): ReactElement => {
   return (
     <Header className={styles.header}>
       <h1 className={`${styles.headerItem} ${styles.headerTitle}`}>
         Where are they?
       </h1>
-      <h1 className={`${styles.headerItem} ${styles.headerCounter}`}>00:00</h1>
+      <div className={`${styles.headerItem} ${styles.headerCounter}`}>
+        <Timer isGameDone={false} />
+      </div>
       <CharacterListPopoverCard characters={characters}>
         <Button
           type="primary"
           shape="circle"
           className={`${styles.headerItem} ${styles.headerButton}`}
         >
-          3
+          {characterLeft}
         </Button>
       </CharacterListPopoverCard>
     </Header>

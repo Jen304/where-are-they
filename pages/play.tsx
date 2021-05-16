@@ -1,6 +1,6 @@
 import PlayHeader from "../components/play-header";
 import DefaultLayout from "../components/layout";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import PlayerRecordForm from "../components/player-record-form";
 import { GameType } from "../types/game";
 import { GetStaticPropsResult } from "next";
@@ -33,8 +33,16 @@ type PropsType = {
  * Play room page
  */
 const Play = ({ game }: PropsType): ReactElement => {
+  const [characterLeft, setCharacterLeft] = useState(game.characters.length);
   return (
-    <DefaultLayout header={<PlayHeader characters={game.characters} />}>
+    <DefaultLayout
+      header={
+        <PlayHeader
+          characters={game.characters}
+          characterLeft={characterLeft}
+        />
+      }
+    >
       <GameRoom game={game} />
     </DefaultLayout>
   );
