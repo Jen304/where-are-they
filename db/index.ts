@@ -1,10 +1,11 @@
+import { GameType } from "../types/game";
 import db from "./connection";
 
 /**
  * get the game information from database
  * @note should change return type to Promise<GameType> later on
  */
-const getGames = async (): Promise<unknown> => {
+const getGames = async (): Promise<GameType> => {
   // get a list of game and get the first one just in case there will have more game rooms in the future
   const collectionSnapshot = await db.collection("game").get();
   const gameList = [];
@@ -17,7 +18,7 @@ const getGames = async (): Promise<unknown> => {
     // assume that it should have at least one game in the database;
     return gameList[0];
   } else {
-    return {};
+    return {} as GameType;
   }
 };
 
