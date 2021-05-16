@@ -34,12 +34,15 @@ type PropsType = {
  */
 const Play = ({ game }: PropsType): ReactElement => {
   const [characterLeft, setCharacterLeft] = useState(game.characters.length);
+  // this is the player record time to complete the game
+  const [playerRecord, setPlayerRecord] = useState(0);
   return (
     <DefaultLayout
       header={
         <PlayHeader
           characters={game.characters}
           characterLeft={characterLeft}
+          setPlayerRecord={setPlayerRecord}
         />
       }
     >

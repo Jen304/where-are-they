@@ -1,14 +1,21 @@
-import { ReactElement, useEffect, useState } from "react";
+import {
+  ReactElement,
+  SetStateAction,
+  useEffect,
+  useState,
+  Dispatch,
+} from "react";
 import styles from "./timer.module.css";
 
 type PropsType = {
   isGameDone: boolean;
+  setPlayerRecord: Dispatch<SetStateAction<number>>;
 };
 
 /**
  * The timer to count the time player complete the game
  */
-const Timer = ({ isGameDone }: PropsType): ReactElement => {
+const Timer = ({ isGameDone, setPlayerRecord }: PropsType): ReactElement => {
   const [time, setTime] = useState(0);
   useEffect(() => {
     let timeInterval;
@@ -17,6 +24,7 @@ const Timer = ({ isGameDone }: PropsType): ReactElement => {
         setTime((time) => time + 1);
       }, 1000);
     } else if (timeInterval) {
+      setPlayerRecord(time);
       clearInterval(timeInterval);
     }
     return () => {
