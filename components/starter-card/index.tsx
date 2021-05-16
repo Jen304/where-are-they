@@ -16,7 +16,12 @@ const StarterCard = ({ characters }: PropsType): ReactElement => {
     <Card className={styles.cardContainer}>
       <h3 className={styles.cardTitle}>Find these characters</h3>
       <CharacterItemList characters={characters} />
-      <Button type="primary" shape="round" className={styles.cardButton}>
+      <Button
+        type="primary"
+        shape="round"
+        className={styles.cardButton}
+        href="/play"
+      >
         Start
       </Button>
     </Card>
