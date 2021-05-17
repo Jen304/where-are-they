@@ -1,5 +1,5 @@
 import { Layout, Button } from "antd";
-import { ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-item/character-list-popover-card";
 import { CharacterType } from "../../types/game";
@@ -10,7 +10,7 @@ const { Header } = Layout;
 type PropsType = {
   characters: CharacterType[];
   characterLeft: number;
-  setPlayerRecord: SetStateAction<number>;
+  setPlayerRecord: Dispatch<SetStateAction<number>>;
 };
 
 /**

@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, useState } from "react";
+import { MouseEvent, ReactElement, useRef, useState } from "react";
 import { GameType } from "../../types/game";
 import CharacterNameMenu from "../character-name-menu";
 import GameImage from "../game-image";
@@ -14,7 +14,7 @@ type PropsType = {
  */
 const GameRoom = ({ game }: PropsType): ReactElement => {
   const [showMenu, setShowMenu] = useState(false);
-  const [menuPosition, setMenuPosition] = useState({});
+  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [menuTimeout, setMenuTimeout] = useState<
     ReturnType<typeof setTimeout>[]
   >([]);
@@ -44,8 +44,23 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
     });
   };
 
+  // use imageRef to get image height and width
+  const imageRef = useRef();
+
   const onPlayerOptionClick = (characterName) => {
-    console.log(characterName);
+    // get width and height of image
+    const imageWidth = imageRef ? imageRef.current.offsetWidth : 0;
+    const imageHeight = imageRef ? imageRef.current.offsetHeight : 0;
+
+    const { x, y } = menuPosition;
+    // get relative x and y position, so it will be independent from device screen
+    const relX = x / imageWidth;
+    // the header height is 64px
+    const relY = (y - 64) / imageHeight;
+
+    console.log("x" + relX);
+    console.log("y" + relY);
+
     notification.open({
       message: "Opp! That's not correct.",
     });
@@ -55,7 +70,7 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={imageRef}>
       <GameImage source={game.image} onClick={onImageClick} />
       {showMenu && (
         <CharacterNameMenu
