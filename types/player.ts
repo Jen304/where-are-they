@@ -1,7 +1,7 @@
-type PlayerRecord = {
+type PlayerRecordType = {
   name: string;
   time: number;
   timeStamp: number;
 };
 
-export default PlayerRecord;
+export default PlayerRecordType;

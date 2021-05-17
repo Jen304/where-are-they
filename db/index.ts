@@ -1,4 +1,5 @@
 import { CharacterPositionsType, GameType } from "../types/game";
+import PlayerRecordType from "../types/player";
 import db from "./connection";
 
 /**
@@ -35,7 +36,16 @@ const getCharacterPositions = async (): Promise<CharacterPositionsType> => {
   }
 };
 
+// save player record to database
+const savePlayerRecord = async (
+  playerRecord: PlayerRecordType
+): Promise<string> => {
+  const res = await db.collection("player-records").add(playerRecord);
+  return res.id;
+};
+
 export default {
   getGames,
   getCharacterPositions,
+  savePlayerRecord,
 };

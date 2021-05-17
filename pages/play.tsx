@@ -1,6 +1,6 @@
 import PlayHeader from "../components/play-header";
 import DefaultLayout from "../components/layout";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import PlayerRecordForm from "../components/player-record-form";
 import { CharacterPositionsType, GameType } from "../types/game";
 import { GetStaticPropsResult } from "next";
@@ -40,8 +40,44 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
   const [characterLeft, setCharacterLeft] = useState(game.characters.length);
   // this is the player record time to complete the game
   const [playerRecord, setPlayerRecord] = useState(0);
+  const [showForm, setShowForm] = useState(false);
   const onPlayerCorrect = () => {
     setCharacterLeft(characterLeft - 1);
+  };
+
+  useEffect(() => {
+    if (characterLeft == 0) {
+      setTimeout(() => {
+        setShowForm(true);
+      }, 1000);
+    }
+  }, [characterLeft]);
+
+  const onPlayerRecordFormSubmit = async (name) => {
+    const playerData = {
+      name,
+      time: playerRecord,
+      timestamp: Date.now(),
+    };
+    console.log(playerData);
+
+    // send data to backend
+    const options = {
+      method: "POST",
+      body: JSON.stringify(playerData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await fetch(
+        "http://localhost:3000/api/player_records",
+        options
+      );
+      console.log(await res.json());
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <DefaultLayout
@@ -58,7 +94,7 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
         characterPositions={characterPositions}
         onPlayerCorrect={onPlayerCorrect}
       />
-      {characterLeft === 0 && <PlayerRecordForm />}
+      {showForm && <PlayerRecordForm submit={onPlayerRecordFormSubmit} />}
     </DefaultLayout>
   );
 };

@@ -24,9 +24,9 @@ const Timer = ({ isGameDone, setPlayerRecord }: PropsType): ReactElement => {
         setTime((time) => time + 1);
       }, 1000);
     } else if (timeInterval) {
-      setPlayerRecord(time);
       clearInterval(timeInterval);
     }
+    setPlayerRecord(time);
     return () => {
       clearInterval(timeInterval);
     };
