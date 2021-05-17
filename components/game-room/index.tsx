@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useRef, useState } from "react";
-import { GameType } from "../../types/game";
+import { CharacterPositionsType, GameType } from "../../types/game";
 import CharacterNameMenu from "../character-name-menu";
 import GameImage from "../game-image";
 import styles from "./game-room.module.css";
@@ -7,12 +7,18 @@ import { notification } from "antd";
 
 type PropsType = {
   game: GameType;
+  characterPositions: CharacterPositionsType;
+  onPlayerCorrect: () => void;
 };
 
 /**
  * A playable component
  */
-const GameRoom = ({ game }: PropsType): ReactElement => {
+const GameRoom = ({
+  game,
+  characterPositions,
+  onPlayerCorrect,
+}: PropsType): ReactElement => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [menuTimeout, setMenuTimeout] = useState<
@@ -60,10 +66,22 @@ const GameRoom = ({ game }: PropsType): ReactElement => {
 
     console.log("x" + relX);
     console.log("y" + relY);
+    const position = characterPositions[characterName];
+    const disX = Math.abs(position.x - relX) < 0.084;
+    const disY = Math.abs(position.y - relY) < 0.01;
+    let notificationMes;
+    if (disX && disY) {
+      notificationMes = {
+        message: "Yay! It's correct!",
+      };
+      onPlayerCorrect();
+    } else {
+      notificationMes = {
+        message: "Opps! That's not correct.",
+      };
+    }
 
-    notification.open({
-      message: "Opp! That's not correct.",
-    });
+    notification.open(notificationMes);
     clearTimeoutList(menuTimeout);
     setMenuTimeout([]);
     setShowMenu(false);

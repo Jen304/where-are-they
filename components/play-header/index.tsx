@@ -21,13 +21,16 @@ const PlayHeader = ({
   characterLeft,
   setPlayerRecord,
 }: PropsType): ReactElement => {
+  const isGameDone = () => {
+    return characterLeft == 0;
+  };
   return (
     <Header className={styles.header}>
       <h1 className={`${styles.headerItem} ${styles.headerTitle}`}>
         Where are they?
       </h1>
       <div className={`${styles.headerItem} ${styles.headerCounter}`}>
-        <Timer isGameDone={false} setPlayerRecord={setPlayerRecord} />
+        <Timer isGameDone={isGameDone()} setPlayerRecord={setPlayerRecord} />
       </div>
       <CharacterListPopoverCard characters={characters}>
         <Button
