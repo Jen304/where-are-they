@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import { ReactElement } from "react";
 import styles from "./default-header.module.css";
+import Logo from "../logo";
 
 const { Header } = Layout;
 
@@ -10,7 +11,7 @@ const { Header } = Layout;
 const DefaultHeader = (): ReactElement => {
   return (
     <Header className={styles.header}>
-      <h1 className={styles.headerTitle}>Where are they?</h1>
+      <Logo />
     </Header>
   );
 };

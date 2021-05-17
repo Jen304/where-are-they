@@ -1,6 +1,10 @@
 .layout {
     min-height: 100vh;
     background: none;
+    position: relative;
+    
+}
+.backgroundContainer {
     background-image: url("/game-picture.jpg");
     background-color: gray;
     background-repeat: no-repeat;
@@ -10,8 +14,9 @@
     left: 0; right: 0;
     top: 0; bottom: 0;
     z-index: -100;
+
 }
-.backgroundContainer {
+.backgroundContainer::before{
     content: "";
     position: absolute;
     left: 0; right: 0;

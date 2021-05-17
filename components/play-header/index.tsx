@@ -4,6 +4,7 @@ import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-item/character-list-popover-card";
 import { CharacterType } from "../../types/game";
 import Timer from "../timer";
+import Logo from "../logo";
 
 const { Header } = Layout;
 
@@ -26,9 +27,7 @@ const PlayHeader = ({
   };
   return (
     <Header className={styles.header}>
-      <h1 className={`${styles.headerItem} ${styles.headerTitle}`}>
-        Where are they?
-      </h1>
+      <Logo/>
       <div className={`${styles.headerItem} ${styles.headerCounter}`}>
         <Timer isGameDone={isGameDone()} setPlayerRecord={setPlayerRecord} />
       </div>
