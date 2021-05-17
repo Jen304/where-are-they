@@ -44,8 +44,22 @@ const savePlayerRecord = async (
   return res.id;
 };
 
+const getTopRecords = async (): Promise<unknown> => {
+  const collectionSnapshot = await db
+    .collection("player-records")
+    .orderBy("time", "desc")
+    .limit(10)
+    .get();
+  const recordList = {};
+  collectionSnapshot.forEach((item) => {
+    recordList[item.id] = item.data();
+  });
+  return recordList;
+};
+
 export default {
   getGames,
   getCharacterPositions,
   savePlayerRecord,
+  getTopRecords,
 };

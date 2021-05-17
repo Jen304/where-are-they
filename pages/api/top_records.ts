@@ -15,7 +15,8 @@ export default async (
 
   switch (method) {
     case ALLOW_METHOD.GET:
-      res.status(200).end("later on");
+      const records = await db.getTopRecords();
+      res.status(200).json(records);
       break;
     case ALLOW_METHOD.POST:
       const recordID = await db.savePlayerRecord(body);
