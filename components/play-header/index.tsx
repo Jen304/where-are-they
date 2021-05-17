@@ -27,7 +27,7 @@ const PlayHeader = ({
   };
   return (
     <Header className={styles.header}>
-      <Logo/>
+      <Logo />
       <div className={`${styles.headerItem} ${styles.headerCounter}`}>
         <Timer isGameDone={isGameDone()} setPlayerRecord={setPlayerRecord} />
       </div>

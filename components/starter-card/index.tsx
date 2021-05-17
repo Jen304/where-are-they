@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 import styles from "./card.module.css";
 import CharacterItemList from "../character-item-list";
 import { CharacterType } from "../../types/game";
+import LinkButton from "../link-button";
 
 type PropsType = {
   characters: CharacterType[];
@@ -16,14 +17,7 @@ const StarterCard = ({ characters }: PropsType): ReactElement => {
     <Card className={styles.cardContainer}>
       <h3 className={styles.cardTitle}>Find these characters</h3>
       <CharacterItemList characters={characters} />
-      <Button
-        type="primary"
-        shape="round"
-        className={styles.cardButton}
-        href="/play"
-      >
-        Start
-      </Button>
+      <LinkButton label="Start" link="/play" />
     </Card>
   );
 };
