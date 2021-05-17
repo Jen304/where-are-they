@@ -23,7 +23,7 @@ const getGames = async (): Promise<GameType> => {
 };
 
 const getCharacterPositions = async (): Promise<CharacterPositionsType> => {
-  const collectionSnapshot = await db.collection("character_position").get();
+  const collectionSnapshot = await db.collection("character-positions").get();
   const gameList = [];
   collectionSnapshot.forEach((game) => {
     gameList.push(game.data());
