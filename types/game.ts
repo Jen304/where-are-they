@@ -8,4 +8,11 @@ type GameType = {
   image: string;
 };
 
-export type { CharacterType, GameType };
+type CharacterPositionsType = {
+  [name: string]: {
+    x: number;
+    y: number;
+  };
+};
+
+export type { CharacterType, GameType, CharacterPositionsType };

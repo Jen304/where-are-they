@@ -1,4 +1,4 @@
-import { GameType } from "../types/game";
+import { CharacterPositionsType, GameType } from "../types/game";
 import db from "./connection";
 
 /**
@@ -22,6 +22,20 @@ const getGames = async (): Promise<GameType> => {
   }
 };
 
+const getCharacterPositions = async (): Promise<CharacterPositionsType> => {
+  const collectionSnapshot = await db.collection("character_position").get();
+  const gameList = [];
+  collectionSnapshot.forEach((game) => {
+    gameList.push(game.data());
+  });
+  if (gameList.length > 0) {
+    return gameList[0];
+  } else {
+    return {} as CharacterPositionsType;
+  }
+};
+
 export default {
   getGames,
+  getCharacterPositions,
 };
