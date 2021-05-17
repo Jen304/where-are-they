@@ -1,11 +1,16 @@
-import { Card, Table } from "antd";
+import { Card, Table, Pagination } from "antd";
 import { ReactElement } from "react";
+import PlayerRecordType from "../../types/player";
 import styles from "./leader-board.module.css";
+
+type PropsType = {
+  topRecords: PlayerRecordType[];
+};
 
 /**
  * A board of top players
  */
-const LeaderBoard = (): ReactElement => {
+const LeaderBoard = ({ topRecords }: PropsType): ReactElement => {
   const columns = [
     {
       title: "Top",
@@ -23,17 +28,17 @@ const LeaderBoard = (): ReactElement => {
       key: "time",
     },
   ];
-  const data = [
-    {
-      key: 1,
-      place: 1,
-      name: "Jen",
-      time: 60,
-    },
-  ];
+  const data = topRecords.map((record, index) => {
+    return {
+      name: record.name,
+      place: index + 1,
+      time: record.time,
+      key: record.id,
+    };
+  });
   return (
     <Card title="Leader board" className={styles.boardContainer}>
-      <Table columns={columns} dataSource={data}></Table>
+      <Table columns={columns} dataSource={data} pagination={false} />
     </Card>
   );
 };

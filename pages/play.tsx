@@ -74,7 +74,9 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
         "http://localhost:3000/api/player_records",
         options
       );
-      console.log(await res.json());
+      const resData = await res.json();
+      // save last player record to database
+      localStorage.setItem("playerRecord", resData);
     } catch (e) {
       console.log(e);
     }

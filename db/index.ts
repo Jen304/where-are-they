@@ -39,20 +39,26 @@ const getCharacterPositions = async (): Promise<CharacterPositionsType> => {
 // save player record to database
 const savePlayerRecord = async (
   playerRecord: PlayerRecordType
-): Promise<string> => {
+): Promise<PlayerRecordType> => {
   const res = await db.collection("player-records").add(playerRecord);
-  return res.id;
+  return {
+    id: res.id,
+    ...playerRecord,
+  };
 };
 
 const getTopRecords = async (): Promise<unknown> => {
   const collectionSnapshot = await db
     .collection("player-records")
-    .orderBy("time", "desc")
+    .orderBy("time")
     .limit(10)
     .get();
-  const recordList = {};
+  const recordList = [];
   collectionSnapshot.forEach((item) => {
-    recordList[item.id] = item.data();
+    recordList.push({
+      id: item.id,
+      ...item.data(),
+    });
   });
   return recordList;
 };

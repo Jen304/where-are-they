@@ -1,4 +1,5 @@
 type PlayerRecordType = {
+  id?: string;
   name: string;
   time: number;
   timeStamp: number;
