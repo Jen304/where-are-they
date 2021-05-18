@@ -18,6 +18,11 @@ a {
   box-sizing: border-box;
 }
 
+h3, h2{
+  font-size: x-large;
+  font-weight: bold;
+}
+
 :root{
   --primary-color: #fa8c16;
   --logo-font: 'Potta One', cursive;
