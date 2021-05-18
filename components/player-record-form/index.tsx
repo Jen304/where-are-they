@@ -2,7 +2,14 @@ import { Card, Form, Input, Button } from "antd";
 import { ReactElement, useState } from "react";
 import styles from "./player-record-form.module.css";
 
-const PlayerRecordForm = ({ submit }): ReactElement => {
+type PropsType = {
+  submit: (name: string) => void;
+}
+
+/**
+ * A form for player to enter their name and save their play record
+ */
+const PlayerRecordForm = ({ submit }: PropsType): ReactElement => {
   const [name, setName] = useState("");
 
   const onNameChange = (e) => {
