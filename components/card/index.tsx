@@ -17,9 +17,11 @@ const DefaultCard = ({ title, button, children }: PropsType): ReactElement => {
     <Card className={styles.cardContainer}>
       <h3 className={styles.cardTitle}>{title}</h3>
       {children}
-      <div className={styles.cardButtonContainer}>
-        {button && <Button {...button} />}
-      </div>
+      {button && (
+        <div className={styles.cardButtonContainer}>
+          <Button {...button} />
+        </div>
+      )}
     </Card>
   );
 };

@@ -23,18 +23,26 @@
     display: block;
 }
 
-.formInput {
-    border-color: rgb(165, 163, 163);
-    border-radius: 30px;
-    min-width: 150px;
-    max-width: 200px;
-    padding: 5px 10px;
-    display: block;
+.formItem{
     margin: auto;
+    display: flex;
+    justify-content: center;
+    
 }
 
+.formInput {
+    border-radius: 30px;
+    padding: 5px 10px;
+    display: block;
+}
+
+.formInput:focus, .formInput:hover{
+    border: 1px solid var(--primary-color);
+}
+
+
 .formButton {
-    margin: auto;
+    margin-top: 10px;
     border: none;
     display: block;
 }

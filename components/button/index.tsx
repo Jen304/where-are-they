@@ -18,7 +18,7 @@ const DefaultButton = ({
   onClick,
   htmlType,
 }: PropsType): ReactElement => {
-  if (link && onclick) {
+  if (link && onClick) {
     throw Error("Can not have link and onClick function at the same time.");
   }
   return (

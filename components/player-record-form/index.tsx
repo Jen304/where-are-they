@@ -23,6 +23,7 @@ const PlayerRecordForm = ({ submit }: PropsType): ReactElement => {
       <Card title="Save your record" button={false}>
         <Form onFinish={onFormSubmit}>
           <Form.Item
+            name="name"
             rules={[
               {
                 required: true,
@@ -37,13 +38,13 @@ const PlayerRecordForm = ({ submit }: PropsType): ReactElement => {
               onChange={onInputChange}
             />
           </Form.Item>
-          <Form.Item className={styles.formItem}>
+          <div className={styles.formItem}>
             <Button
               label="Save"
               htmlType="submit"
               className={styles.formButton}
             />
-          </Form.Item>
+          </div>
         </Form>
       </Card>
     </div>
