@@ -27,6 +27,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    border: none;
     
 }
 
@@ -36,8 +37,10 @@
     display: block;
 }
 
-.formInput:focus, .formInput:hover{
+.formInput:focus, .formInput:hover, .formInput:active{
     border: 1px solid var(--primary-color);
+    box-shadow: none;
+    background-color:#fff7e6 !important;
 }
 
 

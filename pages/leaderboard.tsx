@@ -10,7 +10,7 @@ import PlayerRecordType from "../types/player";
  * A page to display current player record and leaderboard
  */
 const Record = (): ReactElement => {
-  const { data, error } = useSWR("/api/top_records", (url) => {
+  const { data, error } = useSWR("/api/records", (url) => {
     return fetch(url).then((r) => r.json());
   });
 

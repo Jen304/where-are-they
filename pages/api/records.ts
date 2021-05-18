@@ -14,6 +14,7 @@ export default async (
   const { body, method } = req;
 
   switch (method) {
+    // send back a list of top records (top 5)
     case ALLOW_METHOD.GET:
       const records = await db.getTopRecords();
       res.status(200).json(records);

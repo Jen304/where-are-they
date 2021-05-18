@@ -5,6 +5,7 @@ import PlayerRecordForm from "../components/player-record-form";
 import { CharacterPositionsType, GameType } from "../types/game";
 import { GetStaticPropsResult } from "next";
 import GameRoom from "../components/game-room";
+import { useRouter } from "next/dist/client/router";
 
 type PropsType = {
   game: GameType;
@@ -12,7 +13,7 @@ type PropsType = {
 };
 
 /**
- * Fetch game data from database and pass to the home page
+ * Fetch game data from database and pass to page component
  */
 const getStaticProps = async (): Promise<GetStaticPropsResult<PropsType>> => {
   try {
@@ -41,6 +42,9 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
   // this is the player record time to complete the game
   const [playerRecord, setPlayerRecord] = useState(0);
   const [showForm, setShowForm] = useState(false);
+
+  const router = useRouter();
+
   const onPlayerCorrect = () => {
     setCharacterLeft(characterLeft - 1);
   };
@@ -59,7 +63,6 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
       time: playerRecord,
       timestamp: Date.now(),
     };
-    console.log(playerData);
 
     // send data to backend
     const options = {
@@ -70,13 +73,11 @@ const Play = ({ game, characterPositions }: PropsType): ReactElement => {
       },
     };
     try {
-      const res = await fetch(
-        "http://localhost:3000/api/player_records",
-        options
-      );
+      const res = await fetch("http://localhost:3000/api/records", options);
       const resData = await res.json();
       // save last player record to database
       localStorage.setItem("playerRecord", resData);
+      router.push("/leaderboard");
     } catch (e) {
       console.log(e);
     }

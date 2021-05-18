@@ -51,7 +51,7 @@ const getTopRecords = async (): Promise<unknown> => {
   const collectionSnapshot = await db
     .collection("player-records")
     .orderBy("time")
-    .limit(10)
+    .limit(5)
     .get();
   const recordList = [];
   collectionSnapshot.forEach((item) => {

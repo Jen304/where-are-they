@@ -1,5 +1,5 @@
 .menuContainer{
-    background-color: black !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
     border-radius: 20px;
     border: none;
     min-width: 85px;
@@ -12,4 +12,8 @@
 .menuItem{
     border-radius: 20px;
     border: none;
+}
+
+.menuItem:hover, .menuItem:focus{
+    color: var(--primary-color);
 }
