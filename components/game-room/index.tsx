@@ -5,6 +5,7 @@ import GameImage from "../game-image";
 import styles from "./game-room.module.css";
 import { notification } from "antd";
 import useTimeout from "../../hooks/use-timeout";
+import openNotification from "../notification";
 
 type PropsType = {
   game: GameType;
@@ -51,8 +52,6 @@ const GameRoom = ({
     // the header height is 64px
     const relY = (y - 64) / imageHeight;
 
-    console.log("x" + relX);
-    console.log("y" + relY);
     const position = characterPositions[characterName];
     const disX = Math.abs(position.x - relX) < 0.084;
     const disY = Math.abs(position.y - relY) < 0.01;
@@ -60,15 +59,17 @@ const GameRoom = ({
     if (disX && disY) {
       notificationMes = {
         message: "Yay! It's correct!",
+        type: "success",
       };
       onPlayerCorrect();
     } else {
       notificationMes = {
-        message: "Opps! That's not correct.",
+        message: "Opp! That's not correct.",
+        type: "error",
       };
     }
 
-    notification.open(notificationMes);
+    openNotification(notificationMes);
     clearTimeout();
     setShowMenu(false);
   };
