@@ -1,0 +1,21 @@
+.cardContainer{
+    border: 1px whitesmoke solid;
+    border-radius: 30px;
+    background-color: white;
+    padding: 5px;
+    min-width: 300px;
+    max-width: 360px;
+    margin: 45px auto;
+}
+.cardTitle{
+    text-align: center;
+}
+
+
+.cardButtonContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    
+}
+

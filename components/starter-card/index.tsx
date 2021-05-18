@@ -1,9 +1,7 @@
-import { Card, Button } from "antd";
 import { ReactElement } from "react";
-import styles from "./card.module.css";
 import CharacterItemList from "../character-item-list";
 import { CharacterType } from "../../types/game";
-import LinkButton from "../link-button";
+import Card from "../card";
 
 type PropsType = {
   characters: CharacterType[];
@@ -14,12 +12,8 @@ type PropsType = {
  */
 const StarterCard = ({ characters }: PropsType): ReactElement => {
   return (
-    <Card className={styles.cardContainer}>
-      <h3 className={styles.cardTitle}>Find these characters</h3>
+    <Card title="Find these characters" buttonLink="/play" buttonLabel="Start">
       <CharacterItemList characters={characters} />
-      <div className={styles.cardButtonContainer}>
-        <LinkButton label="Start" link="/play" />
-      </div>
     </Card>
   );
 };
