@@ -1,7 +1,7 @@
-import { Card, Table, Pagination } from "antd";
+import { Table } from "antd";
 import { ReactElement } from "react";
 import PlayerRecordType from "../../types/player";
-import styles from "./leader-board.module.css";
+import Card from "../card";
 
 type PropsType = {
   topRecords: PlayerRecordType[];
@@ -37,7 +37,7 @@ const LeaderBoard = ({ topRecords }: PropsType): ReactElement => {
     };
   });
   return (
-    <Card title="Leader board" className={styles.boardContainer}>
+    <Card title="Leaderboard" buttonLink="/" buttonLabel="Replay">
       <Table columns={columns} dataSource={data} pagination={false} />
     </Card>
   );
