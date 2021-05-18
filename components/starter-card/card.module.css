@@ -12,10 +12,10 @@
 }
 
 
-.cardButton{
-    margin: auto;
-    display: block;
-    background-color: orange;
-    border: 1px solid orange;
+.cardButtonContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    
 }
 
