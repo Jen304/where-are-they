@@ -3,7 +3,7 @@ import DefaultHeader from "../components/default-header";
 import LeaderBoard from "../components/leader-board";
 import { ReactElement, useEffect, useState } from "react";
 import useSWR from "swr";
-import { Button, notification } from "antd";
+import { notification } from "antd";
 import PlayerRecordType from "../types/player";
 
 /**
@@ -42,9 +42,6 @@ const Record = (): ReactElement => {
         {Object.entries(playerRecord).length > 0 && (
           <h1>Your last game was </h1>
         )}
-        <Button type="primary" shape="round" href="/">
-          Restart
-        </Button>
         <LeaderBoard topRecords={data as PlayerRecordType[]} />
       </DefaultLayout>
     );

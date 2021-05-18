@@ -1,7 +1,7 @@
 .logo {
     color: var(--primary-color);
     font-family: var(--logo-font);
-    font-size: xx-large;
+    font-size: x-large;
 }
 .whiteText {
     color: white;
@@ -9,3 +9,9 @@
     margin-left: -10px;
     padding: 0
 }
+
+@media only screen and (max-width: 380px) {
+    .logo {
+      font-size: medium;
+    }
+  }
