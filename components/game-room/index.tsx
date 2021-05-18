@@ -4,6 +4,7 @@ import CharacterNameMenu from "../character-name-menu";
 import GameImage from "../game-image";
 import styles from "./game-room.module.css";
 import { notification } from "antd";
+import useTimeout from "../../hooks/use-timeout";
 
 type PropsType = {
   game: GameType;
@@ -12,7 +13,8 @@ type PropsType = {
 };
 
 /**
- * A playable component
+ * A playable component.
+ * Player can click and choose character options to choose
  */
 const GameRoom = ({
   game,
@@ -21,32 +23,17 @@ const GameRoom = ({
 }: PropsType): ReactElement => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
-  const [menuTimeout, setMenuTimeout] = useState<
-    ReturnType<typeof setTimeout>[]
-  >([]);
+  const { startTimeout, clearTimeout } = useTimeout();
   const onImageClick = (e: MouseEvent) => {
     // clear the old menu time out
-    clearTimeoutList(menuTimeout);
-    setMenuTimeout([]);
+    clearTimeout();
     // set menu position
     const { pageX: x, pageY: y } = e;
     setMenuPosition({ x, y });
     setShowMenu(true);
 
-    // set timeout for menu display time
-    const newTimeoutList = [];
-    // set menu display timeout
-    const timeout = setTimeout(() => {
+    startTimeout(() => {
       setShowMenu(false);
-    }, 5000);
-    newTimeoutList.push(timeout);
-    setMenuTimeout(newTimeoutList);
-  };
-
-  // clear all the timeout in the list
-  const clearTimeoutList = (list: ReturnType<typeof setTimeout>[]) => {
-    list.forEach((item) => {
-      clearTimeout(item);
     });
   };
 
@@ -82,8 +69,7 @@ const GameRoom = ({
     }
 
     notification.open(notificationMes);
-    clearTimeoutList(menuTimeout);
-    setMenuTimeout([]);
+    clearTimeout();
     setShowMenu(false);
   };
 
