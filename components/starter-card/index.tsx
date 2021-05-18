@@ -12,7 +12,10 @@ type PropsType = {
  */
 const StarterCard = ({ characters }: PropsType): ReactElement => {
   return (
-    <Card title="Find these characters" buttonLink="/play" buttonLabel="Start">
+    <Card
+      title="Find these characters"
+      button={{ label: "Start", link: "/play" }}
+    >
       <CharacterItemList characters={characters} />
     </Card>
   );

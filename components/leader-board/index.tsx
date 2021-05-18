@@ -37,7 +37,7 @@ const LeaderBoard = ({ topRecords }: PropsType): ReactElement => {
     };
   });
   return (
-    <Card title="Leaderboard" buttonLink="/" buttonLabel="Replay">
+    <Card title="Leaderboard" button={{ label: "Replay", link: "/play" }}>
       <Table columns={columns} dataSource={data} pagination={false} />
     </Card>
   );

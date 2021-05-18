@@ -8,7 +8,7 @@ type PropsType = {
   className?: string;
 };
 
-const LinkButton = ({ label, link, className }: PropsType): ReactElement => {
+const DefaultButton = ({ label, link, className }: PropsType): ReactElement => {
   return (
     <Button
       shape="round"
@@ -20,4 +20,4 @@ const LinkButton = ({ label, link, className }: PropsType): ReactElement => {
   );
 };
 
-export default LinkButton;
+export default DefaultButton;
