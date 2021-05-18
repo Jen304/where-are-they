@@ -1,19 +1,38 @@
+import { MutableRefObject } from "react";
+
 type PositionType = {
   x: number;
   y: number;
 };
 
+type ImageSize = {
+  width: number;
+  height: number;
+};
+
 type GetPlayerResPosParamsType = {
-  imageSize: {
-    width: number;
-    height: number;
-  };
+  imageSize: ImageSize;
   chosenPosition: PositionType;
 };
 
 type IsCorrectPositionParamsType = {
   correctPosition: PositionType;
   chosenPosition: PositionType;
+};
+
+type CheckPlayerChoiceParamsType = {
+  imageRef: MutableRefObject<undefined>;
+  playerPosition: PositionType;
+  correctPosition: PositionType;
+};
+
+const getImageSize = (imageRef: MutableRefObject<undefined>): ImageSize => {
+  const width = imageRef ? imageRef.current.offsetWidth : 1;
+  const height = imageRef ? imageRef.current.offsetHeight : 1;
+  return {
+    width,
+    height,
+  };
 };
 
 // get a relative position, so we can check on every screen size
@@ -41,7 +60,25 @@ const isCorrectPosition = ({
   return isXCorrect && isYCorrect;
 };
 
+/**
+ * check player choice is correct or not based given image, their chosen position and correct position
+ */
+const checkPlayerChoice = ({
+  imageRef,
+  playerPosition,
+  correctPosition,
+}: CheckPlayerChoiceParamsType): boolean => {
+  const imageSize = getImageSize(imageRef);
+  const relativePos = getPlayerRelativePos({
+    imageSize,
+    chosenPosition: playerPosition,
+  });
+  return isCorrectPosition({
+    correctPosition,
+    chosenPosition: relativePos,
+  });
+};
+
 export default {
-  getPlayerRelativePos,
-  isCorrectPosition,
+  checkPlayerChoice,
 };

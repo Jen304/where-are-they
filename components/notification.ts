@@ -1,7 +1,7 @@
 import { notification } from "antd";
 
 type MessageParamsType = {
-  type: "success" | "error" | "info" | "warning";
+  type?: "success" | "error" | "info" | "warning";
   message: string;
   description?: string;
 };
@@ -15,11 +15,44 @@ const openNotification = ({
   message,
   description,
 }: MessageParamsType): void => {
-  notification[type]({
+  if (type) {
+    notification[type]({
+      message,
+      description,
+      placement: "bottomRight",
+    });
+  } else {
+    notification.open({
+      message,
+      description,
+      placement: "bottomRight",
+    });
+  }
+};
+
+// open notification with sucess icon
+const openSuccessMessage = ({
+  message,
+  description,
+}: MessageParamsType): void => {
+  openNotification({
+    type: "success",
     message,
     description,
-    placement: "bottomRight",
   });
 };
 
+// open notification with error icon
+const openErrorMessage = ({
+  message,
+  description,
+}: MessageParamsType): void => {
+  openNotification({
+    type: "error",
+    message,
+    description,
+  });
+};
+
+export { openSuccessMessage, openErrorMessage };
 export default openNotification;
