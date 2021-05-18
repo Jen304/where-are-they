@@ -18,8 +18,9 @@
 
 }
 
-.formItem{
-    margin: 10px;
+.formButton{
+    margin: auto;
+    display: block;
 }
 
 .formInput {
@@ -28,13 +29,12 @@
     min-width: 150px;
     max-width: 200px;
     padding: 5px 10px;
+    display: block;
+    margin: auto;
 }
 
 .formButton {
-    background-color: orange;
     margin: auto;
-    margin-top: 15px;
-   
     border: none;
     display: block;
 }

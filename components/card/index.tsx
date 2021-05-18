@@ -1,11 +1,11 @@
 import { Card } from "antd";
-import { ComponentProps, ComponentType, ReactElement } from "react";
+import { ComponentProps, ReactElement } from "react";
 import styles from "./card.module.css";
 import Button from "../button";
 
 type PropsType = {
   title: string;
-  button: ComponentProps<typeof Button>;
+  button: ComponentProps<typeof Button> | false;
   children: ReactElement | ReactElement[];
 };
 
@@ -18,7 +18,7 @@ const DefaultCard = ({ title, button, children }: PropsType): ReactElement => {
       <h3 className={styles.cardTitle}>{title}</h3>
       {children}
       <div className={styles.cardButtonContainer}>
-        <Button {...button} />
+        {button && <Button {...button} />}
       </div>
     </Card>
   );

@@ -1,19 +1,33 @@
 import { Button } from "antd";
-import { ReactElement } from "react";
-import styles from "./link-button.module.css";
+import { ReactElement, MouseEventHandler } from "react";
+import styles from "./button.module.css";
 
 type PropsType = {
   label: string;
-  link: string;
+  link?: string;
+  onClick?: MouseEventHandler<HTMLElement>;
   className?: string;
+  htmlType?: "button" | "submit" | "reset";
 };
 
-const DefaultButton = ({ label, link, className }: PropsType): ReactElement => {
+// A button to do a function (onClick) or go to another link (page)
+const DefaultButton = ({
+  label,
+  link,
+  className,
+  onClick,
+  htmlType,
+}: PropsType): ReactElement => {
+  if (link && onclick) {
+    throw Error("Can not have link and onClick function at the same time.");
+  }
   return (
     <Button
       shape="round"
       className={`${styles.button} ${className}`}
       href={link}
+      onClick={onClick}
+      htmlType={htmlType}
     >
       {label}
     </Button>

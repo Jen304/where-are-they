@@ -1,7 +1,9 @@
-import { Card, Form, Input, Button } from "antd";
-import { ReactElement, useState } from "react";
+import { Form, Input } from "antd";
+import { ReactElement } from "react";
 import useTextInput from "../../hooks/use-text-input";
 import styles from "./player-record-form.module.css";
+import Card from "../card";
+import Button from "../button";
 
 type PropsType = {
   submit: (name: string) => void;
@@ -18,9 +20,8 @@ const PlayerRecordForm = ({ submit }: PropsType): ReactElement => {
   };
   return (
     <div className={styles.container}>
-      <Card className={styles.card}>
+      <Card title="Save your record" button={false}>
         <Form onFinish={onFormSubmit}>
-          <h3 className={styles.formItem}>Save your record</h3>
           <Form.Item
             rules={[
               {
@@ -28,16 +29,21 @@ const PlayerRecordForm = ({ submit }: PropsType): ReactElement => {
                 message: "Please enter your name!",
               },
             ]}
+            className={styles.formItem}
           >
             <Input
               placeholder="Enter your name"
-              className={`${styles.formItem} ${styles.formInput}`}
+              className={styles.formInput}
               onChange={onInputChange}
             />
           </Form.Item>
-          <Button shape="round" className={styles.formButton} htmlType="submit">
-            Save
-          </Button>
+          <Form.Item className={styles.formItem}>
+            <Button
+              label="Save"
+              htmlType="submit"
+              className={styles.formButton}
+            />
+          </Form.Item>
         </Form>
       </Card>
     </div>
