@@ -1,5 +1,5 @@
 const getFormatNumber = (number: number): string => {
-  return number > 10 ? String(number) : `0${number}`;
+  return number >= 10 ? String(number) : `0${number}`;
 };
 
 /**

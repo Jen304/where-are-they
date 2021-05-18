@@ -1,10 +1,11 @@
-import { Layout, Button } from "antd";
+import { Layout } from "antd";
 import { Dispatch, ReactElement, SetStateAction } from "react";
 import styles from "./play-header.module.css";
-import CharacterListPopoverCard from "../character-item/character-list-popover-card";
+import CharacterListPopoverCard from "../character-list-popover-card";
 import { CharacterType } from "../../types/game";
 import Timer from "../timer";
 import Logo from "../logo";
+import CharacterCountButton from "../character-count-button";
 
 const { Header } = Layout;
 
@@ -32,13 +33,7 @@ const PlayHeader = ({
         <Timer isGameDone={isGameDone()} setPlayerRecord={setPlayerRecord} />
       </div>
       <CharacterListPopoverCard characters={characters}>
-        <Button
-          type="primary"
-          shape="circle"
-          className={`${styles.headerItem} ${styles.headerButton}`}
-        >
-          {characterLeft}
-        </Button>
+        <CharacterCountButton characterLeft={characterLeft} />
       </CharacterListPopoverCard>
     </Header>
   );

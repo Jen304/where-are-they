@@ -1,7 +1,7 @@
 import { Popover } from "antd";
 import { ReactElement } from "react";
-import { CharacterType } from "../../types/game";
-import CharacterItemList from "../character-item-list";
+import { CharacterType } from "../types/game";
+import CharacterItemList from "./character-item-list";
 
 type PropsType = {
   // item that is hovered to display the card
@@ -21,7 +21,7 @@ const CharacterListPopoverCard = ({
       placement="bottomRight"
       content={<CharacterItemList characters={characters} />}
     >
-      {children}
+      <div>{children}</div>
     </Popover>
   );
 };
