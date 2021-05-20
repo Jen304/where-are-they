@@ -24,10 +24,7 @@ const submitPlayerRecord = async (
   [playerID: string]: PlayerRecordType;
 }> => {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_DOMAIN}/api/records`,
-      getRequestOption(playerData)
-    );
+    const res = await fetch("/api/records", getRequestOption(playerData));
     const resData = await res.json();
     return resData;
   } catch (e) {
