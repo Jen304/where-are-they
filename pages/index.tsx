@@ -4,6 +4,7 @@ import GameStarterCard from "../components/starter-card";
 import { ReactElement } from "react";
 import { GetStaticPropsResult } from "next";
 import { GameType } from "../types/game";
+import styles from "../styles/home.module.css";
 
 /**
  * Fetch game data from database and pass to the home page
@@ -31,7 +32,9 @@ type PropsType = {
 const Home = ({ games }: PropsType): ReactElement => {
   return (
     <Layout header={<DefaultHeader />}>
-      <GameStarterCard characters={games.characters} />
+      <div className={styles.mainContainer}>
+        <GameStarterCard characters={games.characters} />
+      </div>
     </Layout>
   );
 };

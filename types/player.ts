@@ -2,7 +2,7 @@ type PlayerRecordType = {
   id?: string;
   name: string;
   time: number;
-  timeStamp: number;
+  timestamp: number | Date;
 };
 
 export default PlayerRecordType;

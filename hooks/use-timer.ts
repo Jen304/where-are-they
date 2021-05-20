@@ -16,7 +16,7 @@ const useTimer = ({ isStop, onTimerStop }: HookParamsType): HookReturnType => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    let timeInterval;
+    let timeInterval: ReturnType<typeof setInterval>;
 
     // run the timer until it stops
     if (!isStop) {

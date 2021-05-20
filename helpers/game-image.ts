@@ -1,4 +1,5 @@
 import { MutableRefObject } from "react";
+import { CharacterStateType } from "../types/game";
 
 type PositionType = {
   x: number;
@@ -23,7 +24,7 @@ type IsCorrectPositionParamsType = {
 type CheckPlayerChoiceParamsType = {
   imageRef: MutableRefObject<undefined>;
   playerPosition: PositionType;
-  correctPosition: PositionType;
+  characterState: CharacterStateType;
 };
 
 const getImageSize = (imageRef: MutableRefObject<undefined>): ImageSize => {
@@ -66,17 +67,20 @@ const isCorrectPosition = ({
 const checkPlayerChoice = ({
   imageRef,
   playerPosition,
-  correctPosition,
+  characterState,
 }: CheckPlayerChoiceParamsType): boolean => {
   const imageSize = getImageSize(imageRef);
   const relativePos = getPlayerRelativePos({
     imageSize,
     chosenPosition: playerPosition,
   });
-  return isCorrectPosition({
-    correctPosition,
-    chosenPosition: relativePos,
-  });
+  return (
+    !characterState.isFound &&
+    isCorrectPosition({
+      correctPosition: characterState.position,
+      chosenPosition: relativePos,
+    })
+  );
 };
 
 export default {
