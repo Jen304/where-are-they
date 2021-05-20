@@ -4,7 +4,7 @@ import GameStarterCard from "../components/starter-card";
 import { ReactElement } from "react";
 import { GetStaticPropsResult } from "next";
 import { GameType } from "../types/game";
-import styles from "../styles/home.module.css";
+import styles from "../styles/home-page.module.css";
 import db from "../db";
 
 /**
