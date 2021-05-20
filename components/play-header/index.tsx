@@ -2,7 +2,7 @@ import { Layout } from "antd";
 import { Dispatch, ReactElement, SetStateAction } from "react";
 import styles from "./play-header.module.css";
 import CharacterListPopoverCard from "../character-list-popover-card";
-import { CharacterType } from "../../types/game";
+import { CharacterStateListType } from "../../types/game";
 import Timer from "../timer";
 import Logo from "../logo";
 import CharacterCountButton from "../character-count-button";
@@ -10,7 +10,7 @@ import CharacterCountButton from "../character-count-button";
 const { Header } = Layout;
 
 type PropsType = {
-  characters: CharacterType[];
+  characters: CharacterStateListType;
   characterLeft: number;
   setPlayerRecord: Dispatch<SetStateAction<number>>;
 };
@@ -26,13 +26,14 @@ const PlayHeader = ({
   const isGameDone = () => {
     return characterLeft == 0;
   };
+
   return (
     <Header className={styles.header}>
       <Logo />
       <div className={`${styles.headerItem} ${styles.headerCounter}`}>
         <Timer isGameDone={isGameDone()} setPlayerRecord={setPlayerRecord} />
       </div>
-      <CharacterListPopoverCard characters={characters}>
+      <CharacterListPopoverCard characters={Object.values(characters)}>
         <CharacterCountButton characterLeft={characterLeft} />
       </CharacterListPopoverCard>
     </Header>

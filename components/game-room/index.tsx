@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useRef, useState } from "react";
-import { CharacterPositionsType, GameType } from "../../types/game";
+import { CharacterStateListType, GameType } from "../../types/game";
 import CharacterNameMenu from "../character-name-menu";
 import gameImageHelper from "../../helpers/game-image";
 import styles from "./game-room.module.css";
@@ -8,9 +8,9 @@ import { openErrorMessage, openSuccessMessage } from "../notification";
 import GameImage from "../game-image";
 
 type PropsType = {
+  characterStateList: CharacterStateListType;
+  onPlayerCorrect: (name: string) => void;
   game: GameType;
-  characterPositions: CharacterPositionsType;
-  onPlayerCorrect: () => void;
 };
 
 /**
@@ -18,13 +18,14 @@ type PropsType = {
  * Player can click and choose character options to choose
  */
 const GameRoom = ({
-  game,
-  characterPositions,
+  characterStateList,
   onPlayerCorrect,
+  game,
 }: PropsType): ReactElement => {
   const [showMenu, setShowMenu] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const { startTimeout, clearTimeout } = useTimeout();
+
   const onImageClick = (e: MouseEvent) => {
     // clear the old menu timeout if it has
     clearTimeout();
@@ -47,8 +48,12 @@ const GameRoom = ({
     const isCorrect = gameImageHelper.checkPlayerChoice({
       imageRef,
       playerPosition: menuPosition,
-      correctPosition: characterPositions[characterName],
+      characterState: characterStateList[characterName],
     });
+
+    if (isCorrect) {
+      onPlayerCorrect(characterName);
+    }
     displayResultMessage(isCorrect);
 
     clearTimeout();
@@ -61,7 +66,6 @@ const GameRoom = ({
       openSuccessMessage({
         message: "Yay! You're correct",
       });
-      onPlayerCorrect();
     } else {
       openErrorMessage({
         message: "Opp! It's not correct",
@@ -74,7 +78,7 @@ const GameRoom = ({
       <GameImage source={game.image} onClick={onImageClick} />
       {showMenu && (
         <CharacterNameMenu
-          characters={game.characters}
+          characters={characterStateList}
           position={menuPosition}
           itemOnClickHandler={onPlayerOptionClick}
         />

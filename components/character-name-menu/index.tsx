@@ -1,10 +1,10 @@
-import { Menu, notification } from "antd";
+import { Menu } from "antd";
 import { ReactElement } from "react";
-import { CharacterType } from "../../types/game";
+import { CharacterStateListType } from "../../types/game";
 import styles from "./character-name-menu.module.css";
 
 type PropsType = {
-  characters: CharacterType[];
+  characters: CharacterStateListType;
   position: {
     x: number;
     y: number;
@@ -20,6 +20,7 @@ const CharacterNameMenu = ({
   position,
   itemOnClickHandler,
 }: PropsType): ReactElement => {
+  // return onClick handler with passed characterName
   const getMenuItemClickHandler = (characterName: string) => {
     const onClick = () => {
       itemOnClickHandler(characterName);
@@ -33,15 +34,19 @@ const CharacterNameMenu = ({
       // container position is relative => make the y position higher to adjust accordingly
       style={{ top: `calc(${position.y}px - 3.5rem)`, left: `${position.x}px` }}
     >
-      {characters.map((character) => (
-        <Menu.Item
-          key={character.name}
-          className={styles.menuItem}
-          onClick={getMenuItemClickHandler(character.name)}
-        >
-          {character.name}
-        </Menu.Item>
-      ))}
+      {Object.keys(characters).map((key) => {
+        if (!characters[key].isFound) {
+          return (
+            <Menu.Item
+              key={key}
+              className={styles.menuItem}
+              onClick={getMenuItemClickHandler(key)}
+            >
+              {characters[key].name}
+            </Menu.Item>
+          );
+        }
+      })}
     </Menu>
   );
 };
