@@ -25,7 +25,7 @@ const submitPlayerRecord = async (
 }> => {
   try {
     const res = await fetch(
-      "http://localhost:3000/api/records",
+      `${process.env.NEXT_PUBLIC_DOMAIN}/api/records`,
       getRequestOption(playerData)
     );
     const resData = await res.json();
