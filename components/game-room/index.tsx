@@ -41,9 +41,9 @@ const GameRoom = ({
   };
 
   // use imageRef to get image height and width
-  const imageRef = useRef();
+  const imageRef = useRef<HTMLDivElement>();
 
-  const onPlayerOptionClick = (characterName) => {
+  const onPlayerOptionClick = (characterName: string) => {
     // get width and height of image
     const isCorrect = gameImageHelper.checkPlayerChoice({
       imageRef,
@@ -61,7 +61,7 @@ const GameRoom = ({
   };
 
   // should I move to game-image helper?
-  const displayResultMessage = (isCorrect) => {
+  const displayResultMessage = (isCorrect: boolean) => {
     if (isCorrect) {
       openSuccessMessage({
         message: "Yay! You're correct",

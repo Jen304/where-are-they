@@ -6,6 +6,9 @@ type HookParamsType = {
   triggerChangeValue: unknown;
 };
 
+/**
+ * control the display of an component/element
+ */
 const useDisplayController = ({
   defaultDisplay,
   changeDisplayCondition,

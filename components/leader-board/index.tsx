@@ -27,7 +27,7 @@ const LeaderBoard = ({ topRecords }: PropsType): ReactElement => {
       dataIndex: "time",
       key: "time",
       // show how many seconds top player completed
-      render: (time) => `${time}s`,
+      render: (time: number) => `${time}s`,
     },
   ];
   const data = topRecords.map((record, index) => {

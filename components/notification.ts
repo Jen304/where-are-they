@@ -30,7 +30,7 @@ const openNotification = ({
   }
 };
 
-// open notification with sucess icon
+// open notification with success icon
 const openSuccessMessage = ({
   message,
   description,

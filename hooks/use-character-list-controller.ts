@@ -10,6 +10,9 @@ type HookParamsType = {
   characterPositions: CharacterPositionsType;
 };
 
+/**
+ * control character state list to keep character information and track how many character found/not found
+ */
 const useCharacterListController = ({
   characterInfo,
   characterPositions,
