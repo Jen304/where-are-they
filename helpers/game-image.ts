@@ -22,14 +22,14 @@ type IsCorrectPositionParamsType = {
 };
 
 type CheckPlayerChoiceParamsType = {
-  imageRef: MutableRefObject<undefined>;
+  imageRef: MutableRefObject<HTMLElement>;
   playerPosition: PositionType;
   characterState: CharacterStateType;
 };
 
-const getImageSize = (imageRef: MutableRefObject<undefined>): ImageSize => {
-  const width = imageRef ? imageRef.current.offsetWidth : 1;
-  const height = imageRef ? imageRef.current.offsetHeight : 1;
+const getImageSize = (imageRef: MutableRefObject<HTMLElement>): ImageSize => {
+  const width = imageRef.current.offsetWidth ?? 1;
+  const height = imageRef.current.offsetHeight ?? 1;
   return {
     width,
     height,

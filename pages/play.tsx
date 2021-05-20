@@ -9,6 +9,7 @@ import { useRouter } from "next/dist/client/router";
 import useCharacterListController from "../hooks/use-character-list-controller";
 import useDisplayController from "../hooks/use-display-controller";
 import submitPlayerRecord from "../helpers/submit-player-record";
+import db from "../db";
 
 type PropsType = {
   game: GameType;
@@ -19,22 +20,31 @@ type PropsType = {
  * Fetch game data from database and pass to page component
  */
 const getStaticProps = async (): Promise<GetStaticPropsResult<PropsType>> => {
+  let result = {
+    props: {
+      game: null,
+      characterPositions: null,
+    },
+  };
   try {
     // fetch game data
-    const response = await fetch("http://localhost:3000/api/games");
-    const gameData = await response.json();
+    //const response = await fetch("http://localhost:3000/api/games");
+    //const gameData = await response.json();
+    const gameData = await db.getGames();
 
     // fetch character positions data
-    const positionResponse = await fetch(
-      "http://localhost:3000/api/character_positions"
-    );
-    const positionData = await positionResponse.json();
-    return {
+    // const positionResponse = await fetch(
+    //   "http://localhost:3000/api/character_positions"
+    // );
+    // const positionData = await positionResponse.json();
+    const positionData = await db.getCharacterPositions();
+    result = {
       props: { game: { ...gameData }, characterPositions: { ...positionData } },
     };
   } catch (e) {
     console.log(e);
   }
+  return result;
 };
 
 /**

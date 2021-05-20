@@ -5,6 +5,7 @@ import { ReactElement } from "react";
 import { GetStaticPropsResult } from "next";
 import { GameType } from "../types/game";
 import styles from "../styles/home.module.css";
+import db from "../db";
 
 /**
  * Fetch game data from database and pass to the home page
@@ -14,15 +15,22 @@ const getStaticProps = async (): Promise<
     games: GameType;
   }>
 > => {
+  let result = {
+    props: {
+      games: null,
+    },
+  };
+
   try {
-    const response = await fetch("http://localhost:3000/api/games");
-    const gameData = await response.json();
-    return {
+    // const response = await fetch("http://localhost:3000/api/games");
+    const gameData = await db.getGames();
+    result = {
       props: { games: { ...gameData } },
     };
   } catch (e) {
     console.log(e);
   }
+  return result;
 };
 
 type PropsType = {
