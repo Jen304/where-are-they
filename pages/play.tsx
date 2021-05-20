@@ -27,17 +27,10 @@ const getStaticProps = async (): Promise<GetStaticPropsResult<PropsType>> => {
     },
   };
   try {
-    // fetch game data
-    //const response = await fetch("http://localhost:3000/api/games");
-    //const gameData = await response.json();
+    // get data from database
     const gameData = await db.getGames();
-
-    // fetch character positions data
-    // const positionResponse = await fetch(
-    //   "http://localhost:3000/api/character_positions"
-    // );
-    // const positionData = await positionResponse.json();
     const positionData = await db.getCharacterPositions();
+
     result = {
       props: { game: { ...gameData }, characterPositions: { ...positionData } },
     };
