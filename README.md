@@ -2,6 +2,8 @@
 
 | This is the project inspired from [The Odin Project curriculum: WHERE'S WALDO (A PHOTO TAGGING APP)](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/where-s-waldo-a-photo-tagging-app)
 
+Demo Link: [https://where-are-they.vercel.app](https://where-are-they.vercel.app)
+
 ## Overview
 A photo-tagging game that requires player to choose 3 characters in the picture
 
